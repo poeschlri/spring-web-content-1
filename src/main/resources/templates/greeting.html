@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+</head>
+<body>
+<h1>Unsere erste Java-Web-Anwendung!!</h1>
+
+<span>Hello, </span> <span th:text="${name}"/>
+
+<h2>Unsere Personen</h2>
+
+<table>
+    <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+    </tr>
+    <tr th:each="person : ${personList}">
+        <td th:text="${person.firstName}"/>
+        <td th:text="${person.lastName}"/>
+    </tr>
+</table>
+
+</body>
+</html>
