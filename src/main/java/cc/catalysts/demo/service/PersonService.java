@@ -10,4 +10,6 @@ import java.util.List;
 public interface PersonService {
 
     List<Person> findAll();
+
+    void create(Person person);
 }

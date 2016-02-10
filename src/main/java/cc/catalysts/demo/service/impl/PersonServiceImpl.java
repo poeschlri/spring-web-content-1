@@ -29,6 +29,11 @@ public class PersonServiceImpl implements PersonService, InitializingBean {
     }
 
     @Override
+    public void create(Person person) {
+        personRepository.save(person);
+    }
+
+    @Override
     public void afterPropertiesSet() throws Exception {
         if (personRepository.count() == 0) {     // SELECT count(1) from Person;
             personRepository.save(new Person("Klaus", "Lehner"));    // INSERT INTO PERSON VALUES ('Klaus', 'Lehner');
