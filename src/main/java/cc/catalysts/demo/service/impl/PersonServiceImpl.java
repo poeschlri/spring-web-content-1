@@ -1,5 +1,6 @@
 package cc.catalysts.demo.service.impl;
 
+import cc.catalysts.demo.dto.CreatePersonDto;
 import cc.catalysts.demo.model.Person;
 import cc.catalysts.demo.repository.PersonRepository;
 import cc.catalysts.demo.service.PersonService;
@@ -29,8 +30,11 @@ public class PersonServiceImpl implements PersonService, InitializingBean {
     }
 
     @Override
-    public void create(Person person) {
-        personRepository.save(person);
+    public void create(CreatePersonDto person) {
+        Person entity = new Person();
+        entity.setFirstName(person.getFirstName());
+        entity.setLastName(person.getLastName());
+        personRepository.save(entity);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package cc.catalysts.demo.service;
 
+import cc.catalysts.demo.dto.CreatePersonDto;
 import cc.catalysts.demo.model.Person;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface PersonService {
 
     List<Person> findAll();
 
-    void create(Person person);
+    void create(CreatePersonDto person);
 }

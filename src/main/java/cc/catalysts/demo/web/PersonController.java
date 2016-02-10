@@ -1,17 +1,18 @@
 package cc.catalysts.demo.web;
 
+import cc.catalysts.demo.dto.CreatePersonDto;
 import cc.catalysts.demo.model.Person;
 import cc.catalysts.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 /**
  * @author Klaus Lehner
@@ -33,8 +34,14 @@ public class PersonController {
         return mav;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public List<Person> personsAsJson() {
+        return personService.findAll();
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public View createPerson(Person person) {
+    public View createPerson(CreatePersonDto person) {
         personService.create(person);
         return new RedirectView("/");
     }
